@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=18 format=4 uid="uid://byhooyar1u6gg"]
-=======
 [gd_scene load_steps=25 format=4 uid="uid://byhooyar1u6gg"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_ftibs"]
 [ext_resource type="Texture2D" uid="uid://c2qhx5er8i6pm" path="res://Assets/Sprites/placeholder.png" id="1_ia808"]
@@ -12,14 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://c3iiwourm5n6o" path="res://Assets/Sprites/grass-block2.png" id="5_tc43k"]
 [ext_resource type="Texture2D" uid="uid://cge7xwxh4hnv4" path="res://Assets/Sprites/rock-block.png" id="6_rwumo"]
 [ext_resource type="Texture2D" uid="uid://4rr17hdafrs1" path="res://Assets/Sprites/wood-block.png" id="7_8vfv0"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" uid="uid://dg414f6qpd3i3" path="res://Scenes/enemy.tscn" id="8_ltl2w"]
-=======
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="8_8fbdy"]
 [ext_resource type="Texture2D" uid="uid://bkyo14618u1uk" path="res://Assets/Sprites/prison guard sheet.png" id="8_x3gdy"]
 [ext_resource type="Texture2D" uid="uid://gckvvb8xeo11" path="res://Assets/Sprites/banana.png" id="11_34ias"]
 [ext_resource type="Script" path="res://Scenes/rich_text_label.gd" id="12_6neh3"]
->>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_proi3"]
 texture = ExtResource("1_ia808")
@@ -85,8 +77,6 @@ _data = {
 }
 point_count = 11
 
-<<<<<<< Updated upstream
-=======
 [sub_resource type="AtlasTexture" id="AtlasTexture_ioewm"]
 atlas = ExtResource("8_x3gdy")
 region = Rect2(0, 0, 32, 32)
@@ -104,7 +94,6 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_atps8"]
 
->>>>>>> Stashed changes
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ftibs")
 
@@ -115,9 +104,6 @@ tile_set = SubResource("TileSet_kwwh2")
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kqava")
 
-<<<<<<< Updated upstream
-[node name="Enemy" parent="EnemyPath" instance=ExtResource("8_ltl2w")]
-=======
 [node name="Enemy" type="PathFollow2D" parent="EnemyPath"]
 position = Vector2(1060, -61)
 rotation = 1.5708
@@ -155,4 +141,3 @@ fit_content = true
 script = ExtResource("12_6neh3")
 
 [connection signal="currencysig" from="." to="UI/RichTextLabel" method="_on_main_currencysig"]
->>>>>>> Stashed changes
