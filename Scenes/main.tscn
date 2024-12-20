@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=18 format=4 uid="uid://byhooyar1u6gg"]
 =======
 [gd_scene load_steps=25 format=4 uid="uid://byhooyar1u6gg"]
@@ -116,3 +117,42 @@ curve = SubResource("Curve2D_kqava")
 
 <<<<<<< Updated upstream
 [node name="Enemy" parent="EnemyPath" instance=ExtResource("8_ltl2w")]
+=======
+[node name="Enemy" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(1060, -61)
+rotation = 1.5708
+rotates = false
+loop = false
+script = ExtResource("8_8fbdy")
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="EnemyPath/Enemy"]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_270l2")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+modulate = Color(0.960351, 0.960351, 0.960351, 1)
+self_modulate = Color(0.893492, 0.925583, 0.961223, 1)
+material = SubResource("ShaderMaterial_atps8")
+offset_right = 164.0
+offset_bottom = 48.0
+color = Color(0.864675, 0.864675, 0.864675, 1)
+
+[node name="BananaMoney" type="Sprite2D" parent="UI"]
+position = Vector2(24.5, 25.5)
+scale = Vector2(1.40625, 1.28125)
+texture = ExtResource("11_34ias")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI"]
+offset_left = 56.0
+offset_top = 1.0
+offset_right = 121.0
+offset_bottom = 50.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 35
+fit_content = true
+script = ExtResource("12_6neh3")
+
+[connection signal="currencysig" from="." to="UI/RichTextLabel" method="_on_main_currencysig"]
+>>>>>>> Stashed changes
