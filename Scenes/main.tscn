@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=4 uid="uid://byhooyar1u6gg"]
+[gd_scene load_steps=22 format=4 uid="uid://byhooyar1u6gg"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_ftibs"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_ftibs"]
 [ext_resource type="Texture2D" uid="uid://c2qhx5er8i6pm" path="res://Assets/Sprites/placeholder.png" id="1_ia808"]
 [ext_resource type="Texture2D" uid="uid://csoyk1eaacjpd" path="res://Assets/Sprites/sand-path.png" id="2_el06q"]
 [ext_resource type="Texture2D" uid="uid://bbaog60r8bd0p" path="res://Assets/Sprites/stone-path.png" id="3_ggbb4"]
@@ -8,10 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c3iiwourm5n6o" path="res://Assets/Sprites/grass-block2.png" id="5_tc43k"]
 [ext_resource type="Texture2D" uid="uid://cge7xwxh4hnv4" path="res://Assets/Sprites/rock-block.png" id="6_rwumo"]
 [ext_resource type="Texture2D" uid="uid://4rr17hdafrs1" path="res://Assets/Sprites/wood-block.png" id="7_8vfv0"]
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="8_8fbdy"]
-[ext_resource type="Texture2D" uid="uid://bkyo14618u1uk" path="res://Assets/Sprites/prison guard sheet.png" id="8_x3gdy"]
+[ext_resource type="PackedScene" uid="uid://dg414f6qpd3i3" path="res://Scenes/enemy.tscn" id="9_v6paq"]
 [ext_resource type="Texture2D" uid="uid://gckvvb8xeo11" path="res://Assets/Sprites/banana.png" id="11_34ias"]
-[ext_resource type="Script" path="res://Scenes/rich_text_label.gd" id="12_6neh3"]
+[ext_resource type="Script" path="res://Scripts/rich_text_label.gd" id="12_6neh3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_proi3"]
 texture = ExtResource("1_ia808")
@@ -77,21 +76,6 @@ _data = {
 }
 point_count = 11
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ioewm"]
-atlas = ExtResource("8_x3gdy")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_270l2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ioewm")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_atps8"]
 
 [node name="Main" type="Node2D"]
@@ -104,16 +88,7 @@ tile_set = SubResource("TileSet_kwwh2")
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kqava")
 
-[node name="Enemy" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(1060, -61)
-rotation = 1.5708
-rotates = false
-loop = false
-script = ExtResource("8_8fbdy")
-
-[node name="EnemySprite" type="AnimatedSprite2D" parent="EnemyPath/Enemy"]
-rotation = -1.5708
-sprite_frames = SubResource("SpriteFrames_270l2")
+[node name="Enemy" parent="EnemyPath" instance=ExtResource("9_v6paq")]
 
 [node name="UI" type="Node2D" parent="."]
 
