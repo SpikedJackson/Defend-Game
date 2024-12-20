@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://byhooyar1u6gg"]
+[gd_scene load_steps=18 format=4 uid="uid://byhooyar1u6gg"]
 
 [ext_resource type="Texture2D" uid="uid://c2qhx5er8i6pm" path="res://Assets/Sprites/placeholder.png" id="1_ia808"]
 [ext_resource type="Texture2D" uid="uid://csoyk1eaacjpd" path="res://Assets/Sprites/sand-path.png" id="2_el06q"]
@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3iiwourm5n6o" path="res://Assets/Sprites/grass-block2.png" id="5_tc43k"]
 [ext_resource type="Texture2D" uid="uid://cge7xwxh4hnv4" path="res://Assets/Sprites/rock-block.png" id="6_rwumo"]
 [ext_resource type="Texture2D" uid="uid://4rr17hdafrs1" path="res://Assets/Sprites/wood-block.png" id="7_8vfv0"]
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="8_8fbdy"]
-[ext_resource type="Texture2D" uid="uid://bkyo14618u1uk" path="res://Assets/Sprites/prison guard sheet.png" id="8_x3gdy"]
+[ext_resource type="PackedScene" uid="uid://dg414f6qpd3i3" path="res://Scenes/enemy.tscn" id="8_ltl2w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_proi3"]
 texture = ExtResource("1_ia808")
@@ -74,21 +73,6 @@ _data = {
 }
 point_count = 11
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ioewm"]
-atlas = ExtResource("8_x3gdy")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_270l2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ioewm")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Main" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -98,13 +82,4 @@ tile_set = SubResource("TileSet_kwwh2")
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kqava")
 
-[node name="Enemy" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(1060, -61)
-rotation = 1.5708
-rotates = false
-loop = false
-script = ExtResource("8_8fbdy")
-
-[node name="EnemySprite" type="AnimatedSprite2D" parent="EnemyPath/Enemy"]
-rotation = -1.5708
-sprite_frames = SubResource("SpriteFrames_270l2")
+[node name="Enemy" parent="EnemyPath" instance=ExtResource("8_ltl2w")]

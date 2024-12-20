@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg414f6qpd3i3"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_vp8mj"]
+[ext_resource type="Texture2D" uid="uid://bkyo14618u1uk" path="res://Assets/Sprites/prison guard sheet.png" id="2_73rid"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vfnh"]
+atlas = ExtResource("2_73rid")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kawbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vfnh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="PathFollow2D"]
+position = Vector2(1060, -61)
+rotates = false
+loop = false
+script = ExtResource("1_vp8mj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kawbv")
