@@ -126,7 +126,7 @@ offset_bottom = 48.0
 color = Color(0.864675, 0.864675, 0.864675, 1)
 
 [node name="BananaMoney" type="Sprite2D" parent="UI"]
-position = Vector2(24.5, 25.5)
+position = Vector2(26, 24)
 scale = Vector2(1.40625, 1.28125)
 texture = ExtResource("11_34ias")
 
