@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c3iiwourm5n6o" path="res://Assets/Sprites/grass-block2.png" id="5_tc43k"]
 [ext_resource type="Texture2D" uid="uid://cge7xwxh4hnv4" path="res://Assets/Sprites/rock-block.png" id="6_rwumo"]
 [ext_resource type="Texture2D" uid="uid://4rr17hdafrs1" path="res://Assets/Sprites/wood-block.png" id="7_8vfv0"]
-[ext_resource type="PackedScene" uid="uid://dg414f6qpd3i3" path="res://Scenes/enemy.tscn" id="9_v6paq"]
+[ext_resource type="Script" path="res://Scripts/enemy_path.gd" id="9_indjv"]
 [ext_resource type="Texture2D" uid="uid://gckvvb8xeo11" path="res://Assets/Sprites/banana.png" id="11_34ias"]
 [ext_resource type="Script" path="res://Scripts/rich_text_label.gd" id="12_6neh3"]
 
@@ -87,8 +87,7 @@ tile_set = SubResource("TileSet_kwwh2")
 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kqava")
-
-[node name="Enemy" parent="EnemyPath" instance=ExtResource("9_v6paq")]
+script = ExtResource("9_indjv")
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -115,4 +114,5 @@ theme_override_font_sizes/normal_font_size = 35
 fit_content = true
 script = ExtResource("12_6neh3")
 
+[connection signal="createenemysig" from="." to="EnemyPath" method="_on_main_createenemysig"]
 [connection signal="currencysig" from="." to="UI/RichTextLabel" method="_on_main_currencysig"]
