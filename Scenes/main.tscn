@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://byhooyar1u6gg"]
+[gd_scene load_steps=25 format=4 uid="uid://byhooyar1u6gg"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ftibs"]
 [ext_resource type="Texture2D" uid="uid://c2qhx5er8i6pm" path="res://Assets/Sprites/placeholder.png" id="1_ia808"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://4rr17hdafrs1" path="res://Assets/Sprites/wood-block.png" id="7_8vfv0"]
 [ext_resource type="Script" path="res://Scripts/enemy_path.gd" id="9_indjv"]
 [ext_resource type="Texture2D" uid="uid://gckvvb8xeo11" path="res://Assets/Sprites/banana.png" id="11_34ias"]
+[ext_resource type="Script" path="res://Scenes/node_2d.gd" id="13_sk8fy"]
 [ext_resource type="Texture2D" uid="uid://bhw1x0mj2t5u0" path="res://Assets/Sprites/monkey-idle1.png" id="13_t4eih"]
+[ext_resource type="Script" path="res://Scenes/button.gd" id="13_tin1k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_proi3"]
 texture = ExtResource("1_ia808")
@@ -79,6 +81,15 @@ point_count = 11
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_atps8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1m5al"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_t4eih")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ftibs")
@@ -118,6 +129,12 @@ position = Vector2(26, 24)
 scale = Vector2(1.40625, 1.28125)
 texture = ExtResource("11_34ias")
 
+[node name="Basic Tower" type="Node2D" parent="UI"]
+script = ExtResource("13_sk8fy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Basic Tower"]
+sprite_frames = SubResource("SpriteFrames_1m5al")
+
 [node name="Tower1" type="Node2D" parent="UI"]
 
 [node name="ColorRect" type="ColorRect" parent="UI/Tower1"]
@@ -143,19 +160,20 @@ position = Vector2(299, 24)
 scale = Vector2(1.40625, 1.28125)
 texture = ExtResource("11_34ias")
 
-[node name="Button" type="Button" parent="UI/Tower1"]
+[node name="CanvasLayer" type="CanvasLayer" parent="UI/Tower1"]
+
+[node name="Button" type="Button" parent="UI/Tower1/CanvasLayer"]
 modulate = Color(0.952941, 1, 0, 1)
 self_modulate = Color(1, 1, 0, 1)
 top_level = true
-offset_left = 201.0
-offset_top = 3.0
-offset_right = 323.0
-offset_bottom = 50.0
-
-[node name="BasicTower" type="Node" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BasicTower"]
-sprite_frames = SubResource("SpriteFrames_1m5al")
+offset_left = 198.0
+offset_top = 1.0
+offset_right = 327.0
+offset_bottom = 53.0
+script = ExtResource("13_tin1k")
 
 [connection signal="createenemysig" from="." to="EnemyPath" method="_on_main_createenemysig"]
 [connection signal="currencysig" from="." to="UI/Stats/RichTextLabel" method="_on_main_currencysig"]
+[connection signal="mouse_entered" from="UI/Tower1/CanvasLayer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="UI/Tower1/CanvasLayer/Button" to="UI/Tower1/CanvasLayer/Button" method="_on_pressed"]
+[connection signal="pressed" from="UI/Tower1/CanvasLayer/Button" to="UI/Basic Tower" method="_on_button_pressed"]
