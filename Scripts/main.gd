@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var currency = 0
+@export var holdingtower = false
+@export var tower = "1"
 signal currencysig
 signal createenemysig
 

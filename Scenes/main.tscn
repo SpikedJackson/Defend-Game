@@ -121,7 +121,7 @@ offset_right = 121.0
 offset_bottom = 50.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 35
-text = "x 0"
+text = "x "
 fit_content = true
 
 [node name="BananaMoney" type="Sprite2D" parent="UI/Stats"]
@@ -175,5 +175,5 @@ script = ExtResource("13_tin1k")
 [connection signal="createenemysig" from="." to="EnemyPath" method="_on_main_createenemysig"]
 [connection signal="currencysig" from="." to="UI/Stats/RichTextLabel" method="_on_main_currencysig"]
 [connection signal="mouse_entered" from="UI/Tower1/CanvasLayer/Button" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="UI/Tower1/CanvasLayer/Button" to="UI/Tower1/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="pressed" from="UI/Tower1/CanvasLayer/Button" to="UI/Basic Tower" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Tower1/CanvasLayer/Button" to="UI/Tower1/CanvasLayer/Button" method="_on_pressed"]
